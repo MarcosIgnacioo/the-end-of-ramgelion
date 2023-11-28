@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+body{
+    background-color: rgb(236, 235, 235);
+}
+
+
+.secciones .encabezado{
+    font-weight: bold;
+    padding-top: 5%;
+}
+
+.padre{
+    display: flex;
+}
+
+.seccion-izq{
+    flex: 0.3;
+    padding-top: 5%;
+    margin-left: 1%;
+    padding-bottom: 5%;
+}
+
+.secciones p{
+    font-size: 20px;
+    padding-bottom: 5%;
+}
+
+.encabezado{
+    font-weight: bold;
+    padding-top: 5%;
+}
+
+.user-config-padre{
+    flex: 2; 
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 2%;
+    padding-left: 5%;
+}
+
+.titulo-user{
+    margin-bottom: 20px;
+}
+
+.editar-usuario{
+    font-size: 18px;
+
+    color: #24469F;
+}
+
+.color{
+    color: #24469F;
+}
+
+.formulario-all{
+    font-size: 2.4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.formulario-unique{
+    font-size: 4rem;
+    width: 45vh;
+    height: 10vh;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=text] ,input[type=password]{
+    padding-left: 2%;
+}
+
+.form p{
+    padding-bottom: 3%;
+}
+
+
+.formulario-unique input[type=text], input[type=password]{
+    width: 90%;
+    height: 65%;
+
+    border-radius: 4px;
+    border: 1px solid lightgray;
+    background-color: #F5F5F5;
+}
+
+.formulario-btn button{
+    width: 40%;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+.formulario-btn .cancelar{
+    background-color: rgb(236, 235, 235);
+}
+
+.formulario-btn .guardar{
+    background-color: #24469F;
+    color: white;
+    border: 1px;
+}
+
+@media screen and (max-width:420px){
+    .contenedor-filtros{
+        display: none;
+    }
+
+    .formulario-all{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user-config-padre{
+        padding-left: 0%;
+    }
+
+    .formulario-unique input[type=text], input[type=password]{
+        width: 87%;
+    }
+
+}
+
+
