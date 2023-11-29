@@ -4,7 +4,9 @@
 <title>Inicia sesión | RamDeals</title>
 
 <body>
-  <form action="/login/" method="POST">
+  <form action="/signin/" method="POST">
+    {{error}}
+    {% csrf_token %}
     <div class="imagen">
       <img src="recursos/login.png" alt="">
     </div>
