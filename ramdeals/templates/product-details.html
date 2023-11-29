@@ -1,135 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/2291c68a10.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="./styles/header.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="icon" href="recursos/logoramfinal.ico">
-    <link rel="stylesheet" href="styles/product-details.css">
-    <title>RamDeals</title>
-</head>
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="styles/product-details.css">
+<title>RamDeals</title>
 
 <body>
-    <header class="header">
-        <div class="oferta">
-            <span>Especial venta de verano en todo- OFF 50%</span>
-            <a href="#">¡Compra ahora!</a>
-
-            <select id="frutas" name="fruta">
-                <option value="Español">Español</option>
-                <option value="Inglés">Inglés</option>
-                <option value="Deustch">Deustch</option>
-                <option value="Naruto">Naruto</option>
-            </select>
-        </div>
-
-        <nav class="desktop-nav">
-            <ul class="ul">
-                <li class="logo">
-                    <img src="./recursos/Untitled.svg" alt="">
-                    <div class="page-title">
-                        <span class="title" id="yellow">RAM <span class="title" id="blue">DEALS</span></span>
-                    </div>
-                </li>
-                <li class="li">
-                    <a href="index.html">
-                        Inicio
-                    </a>
-                </li>
-                <li class="li">
-                    <a href="">Contacto</a>
-                </li>
-                <li class="li">
-                    <a href="registro.html">
-                        Registrarse
-                    </a>
-                </li>
-                <li class="box">
-                    <input type="text" placeholder="¿Qué es lo que buscas?" class="search-box">
-                    <a href="search.html" class="material-symbols-outlined">
-                        search
-                    </a>
-                </li>
-                <li class="icons">
-                    <a href="#" class="material-symbols-outlined">
-                        favorite
-                    </a>
-                </li>
-                <li class="icons">
-                    <a href="shopping-cart.html" class="material-symbols-outlined">
-                        shopping_cart
-                    </a>
-                </li>
-                <li class="icons">
-                    <a href="user.html" class="material-symbols-outlined">
-                        person
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="title-container">
-            <div class="logo">
-                <img src="./recursos/Untitled.svg" alt="">
-                <div class="page-title">
-                    <span class="title" id="yellow">RAM <span class="title" id="blue">DEALS</span></span>
-                </div>
-                <button class="hamburger">
-                    <div class="bar">
-                        .
-                    </div>
-                </button>
-            </div>
-        </div>
-        <nav class="mobile-nav">
-            <ul class="ul">
-              <li class="li">
-                <a href="index.html" class="material-symbols-outlined">
-                  home
-                </a>
-              </li>
-              <li class="li">
-                <button class="material-symbols-outlined is-active" id="search-button">
-                  search</button>
-              </li>
-              <li class="li">
-                <a href="login.html" class="material-symbols-outlined">
-                  account_circle
-                </a>
-              </li>
-              <li>
-                <a href="#" class="material-symbols-outlined">
-                  favorite
-                </a>
-              </li>
-              <li>
-                <a href="shopping-cart.html" class="material-symbols-outlined">
-                  shopping_cart
-                </a>
-              </li>
-              <li>
-                <a href="user.html" class="material-symbols-outlined">
-                  manage_accounts
-                </a>
-              </li>
-            </ul>
-          </nav>
-        <div class="box" id="search-m-container">
-            <input type="text" placeholder="¿Qué es lo que buscas?" class="search-box">
-            <a href="search.html" class="material-symbols-outlined" id="search-m">
-                search
-            </a>
-        </div>
-    </header>
     <div class="pag">
         <div class="parametro">
             <p class="paramtext" style="color: gray;">Cuenta</p>
@@ -142,9 +16,9 @@
         <div class="producto">
             <div class="fotosizq">
                 <div class="fotizq2"><img src="./recursos/ps1.png" alt="" class="fotores"></div>
-                <div class="fotizq"><img src="./recursos/ps2.png" alt=""   class="fotores"></div>
-                <div class="fotizq"><img src="./recursos/ps3.png" alt=""  class="fotores"></div>
-                <div class="fotizq"><img src="./recursos/ps4.png" alt=""  class="fotores"></div>
+                <div class="fotizq"><img src="./recursos/ps2.png" alt="" class="fotores"></div>
+                <div class="fotizq"><img src="./recursos/ps3.png" alt="" class="fotores"></div>
+                <div class="fotizq"><img src="./recursos/ps4.png" alt="" class="fotores"></div>
             </div>
             <div class="foto">
                 <img src="./recursos/ps5.png" alt="" class="fotoo">
@@ -170,7 +44,7 @@
                         complicaciones. Sensible a la presión.</p>
                 </div>
                 <div class="colores">
-                    <p >Colores:</p>
+                    <p>Colores:</p>
                     <img src="./recursos/colore.png" alt="" style="margin-left: 20pt;" class="fotores5">
                 </div>
                 <div class="talla">
@@ -180,7 +54,8 @@
                 <div class="comprar">
                     <img src="./recursos/cantidad.png" alt="" class="fotores">
                     <a href=""><img src="./recursos/compra.png" alt="" style="margin-left: 13pt;" class="fotores2"></a>
-                    <a href="shopping-cart.html"><img src="./recursos/carrillo.png" alt="" style="" class="fotores3"></a>
+                    <a href="shopping-cart.html"><img src="./recursos/carrillo.png" alt="" style=""
+                            class="fotores3"></a>
                 </div>
                 <div class="entrega">
                     <div class="gratis">
@@ -188,7 +63,8 @@
                         </div>
                         <div class="gratistext">
                             <p style="margin-top: 25pt;">Entrega gratis</p>
-                            <p style="font-size: 10pt; text-decoration:underline;margin-top: 5pt;">Ingresa tu código postal para validar tu entrega gratis</p>
+                            <p style="font-size: 10pt; text-decoration:underline;margin-top: 5pt;">Ingresa tu código
+                                postal para validar tu entrega gratis</p>
                         </div>
                     </div>
                     <div class="devolucion">
@@ -196,12 +72,13 @@
                         </div>
                         <div class="regresartext">
                             <p style="margin-top: 25pt;">Devolución disponible</p>
-                            <p style="font-size: 10pt;margin-top: 5pt;">30 días gratis disponibles de devolución. Saber más</p>
+                            <p style="font-size: 10pt;margin-top: 5pt;">30 días gratis disponibles de devolución. Saber
+                                más</p>
                         </div>
                     </div>
                 </div>
             </div>
-    
+
         </div>
         <div class="relac">
             <p class="prodrelac">Productos relacionados</p>
@@ -214,116 +91,84 @@
         </div>
         <div class="reseñas">
             <div class="reseñasizq">
-                <div style="font-size: 22pt;color: #24469F;font-weight: bold;display: flex;"><img src="./recursos/rect.png" alt=""> <p style="font-size: 22pt;color: #24469F;font-weight: bold;margin-left: 15pt;">Reseñas</p></div>
-                <div class="estrellas2"><img src="./recursos/4vacio.png" alt=""><p style="margin-left: 15pt;">4.2 de 5</p></div>
-                <div style="font-size: 13pt;color: gray;margin-top: 5pt;margin-left: 13pt;">18 calificaciones globales</div>
-                <div class="punt"><p>5 estrellas</p><img src="./recursos/barra1.png" alt="" class="marg1"><p class="marg1">63%</p></div>
-                <div class="punt"><p>4 estrellas</p><img src="./recursos/barra2.png" alt="" class="marg1"><p class="marg1">12%</p></div>
-                <div class="punt"><p>3 estrellas</p><img src="./recursos/barra3.png" alt="" class="marg1"><p class="marg1">17%</p></div>
-                <div class="punt"><p>2 estrellas</p><img src="./recursos/barra4.png" alt="" class="marg1"><p class="marg1">0%</p></div>
-                <div class="punt"><p>1 estrellas</p><img src="./recursos/barra5.png" alt="" class="marg1"><p class="marg1">8%</p></div>
-    
+                <div style="font-size: 22pt;color: #24469F;font-weight: bold;display: flex;"><img
+                        src="./recursos/rect.png" alt="">
+                    <p style="font-size: 22pt;color: #24469F;font-weight: bold;margin-left: 15pt;">Reseñas</p>
+                </div>
+                <div class="estrellas2"><img src="./recursos/4vacio.png" alt="">
+                    <p style="margin-left: 15pt;">4.2 de 5</p>
+                </div>
+                <div style="font-size: 13pt;color: gray;margin-top: 5pt;margin-left: 13pt;">18 calificaciones globales
+                </div>
+                <div class="punt">
+                    <p>5 estrellas</p><img src="./recursos/barra1.png" alt="" class="marg1">
+                    <p class="marg1">63%</p>
+                </div>
+                <div class="punt">
+                    <p>4 estrellas</p><img src="./recursos/barra2.png" alt="" class="marg1">
+                    <p class="marg1">12%</p>
+                </div>
+                <div class="punt">
+                    <p>3 estrellas</p><img src="./recursos/barra3.png" alt="" class="marg1">
+                    <p class="marg1">17%</p>
+                </div>
+                <div class="punt">
+                    <p>2 estrellas</p><img src="./recursos/barra4.png" alt="" class="marg1">
+                    <p class="marg1">0%</p>
+                </div>
+                <div class="punt">
+                    <p>1 estrellas</p><img src="./recursos/barra5.png" alt="" class="marg1">
+                    <p class="marg1">8%</p>
+                </div>
+
             </div>
             <div class="reseñasder">
-                <div><p class="reseñatext">Pancho</p></div>
-                <div style="display: flex;    margin-top: 5pt;"><img src="./recursos/4vacio.png" alt="" style="width: 100pt;"><p class="calif">Bien</p></div>
-                <div><p class="lugar">Revisado en México el 21 de mayo de 2023</p></div>
-                <div><p class="verif">Compra verificada</p></div>
-                <div><p class="gusto">Me gustó bastante</p></div>
-                <div class="megustab"><img src="./recursos/megusta.png" alt=""></div>
-                <hr style="margin-top: 30pt;">
-
-                <div><p class="reseñatext" style="margin-top: 50pt;">Francisco</p></div>
-                <div style="display: flex;    margin-top: 5pt;"><img src="./recursos/1vacio.png" alt="" style="width: 100pt;"><p class="calif">Mal</p></div>
-                <div><p class="lugar">Revisado en México el 21 de mayo de 2023</p></div>
-                <div><p class="verif">Compra verificada</p></div>
-                <div><p class="gusto">Pues a mi no me gustó como la ves</p></div>
-                <div class="megustab"><img src="./recursos/megusta.png" alt=""></div>
-                <hr style="margin-top: 30pt;">
-
-                <div style="display: flex;margin-top: 13pt;"><p style="font-size: 15pt;color: #24469F;font-weight: bold;">Ver más opiniones</p><img src="./recursos/flecha.png" alt="" style="margin-left: 10pt;"></div>
-            </div>
-            
-        </div>
-        
-    </div>
-    
-    <footer>
-        <ul>
-            <li>
-                <h3>
-                    RAMDEALS
-                </h3>
-                <h4>
-                    Suscríbete
-                </h4>
-                <h5>
-                    ¡Ten un 10% de descuento en
-                    tu primera orden!
-                </h5>
-
-                <div class="box-email">
-                    <input type="text" placeholder="Ingresa tu correo" class="search-box">
-                    <a href="#" class="material-symbols-outlined">
-                        send
-                    </a>
+                <div>
+                    <p class="reseñatext">Pancho</p>
                 </div>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <h3>
-                    Soporte
-                </h3>
-                <h4>
-                    Baja California Sur <br> entre Emiliano Zapata <br> SN Int.SN Chametla, <br> 23205 La Paz, <br> Baja
-                    California Sur
-                    México
-                </h4>
-                <h5>
-                    ramdeals@ramservice.com
-                </h5>
-                <h5>
-                    +52-612-117-41-05
-                </h5>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <h3>
-                    Cuenta
-                </h3>
-                <a href="user.html">Mi cuenta</a>
-                <a href="login.html">Iniciar sesión</a>
-                <a href="registro.html">Registrarme</a>
-                <a href="shopping-cart.html">Carrito</a>
-                <a href="#">Lista de deseados</a>
-                <a href="index.html">Ramdeals</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <h3>
-                    Otros
-                </h3>
-                <a href="#">Privacidad</a>
-                <a href="#">Términos de uso</a>
-                <a href="#">FAQ</a>
-                <a href="#">Contáctanos</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <h3>
-                    Descarga
-                    la App
-                </h3>
-                <a href="#">Ahorra 60 pesos en tu
-                    primera compra</a>
-                <img src="./recursos/qr 1.png" alt="">
-            </li>
-        </ul>
-    </footer>
-    <script src="./scripts/hamburger.js"></script>
+                <div style="display: flex;    margin-top: 5pt;"><img src="./recursos/4vacio.png" alt=""
+                        style="width: 100pt;">
+                    <p class="calif">Bien</p>
+                </div>
+                <div>
+                    <p class="lugar">Revisado en México el 21 de mayo de 2023</p>
+                </div>
+                <div>
+                    <p class="verif">Compra verificada</p>
+                </div>
+                <div>
+                    <p class="gusto">Me gustó bastante</p>
+                </div>
+                <div class="megustab"><img src="./recursos/megusta.png" alt=""></div>
+                <hr style="margin-top: 30pt;">
+
+                <div>
+                    <p class="reseñatext" style="margin-top: 50pt;">Francisco</p>
+                </div>
+                <div style="display: flex;    margin-top: 5pt;"><img src="./recursos/1vacio.png" alt=""
+                        style="width: 100pt;">
+                    <p class="calif">Mal</p>
+                </div>
+                <div>
+                    <p class="lugar">Revisado en México el 21 de mayo de 2023</p>
+                </div>
+                <div>
+                    <p class="verif">Compra verificada</p>
+                </div>
+                <div>
+                    <p class="gusto">Pues a mi no me gustó como la ves</p>
+                </div>
+                <div class="megustab"><img src="./recursos/megusta.png" alt=""></div>
+                <hr style="margin-top: 30pt;">
+
+                <div style="display: flex;margin-top: 13pt;">
+                    <p style="font-size: 15pt;color: #24469F;font-weight: bold;">Ver más opiniones</p><img
+                        src="./recursos/flecha.png" alt="" style="margin-left: 10pt;">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </body>
-</html>
+{% endblock %}

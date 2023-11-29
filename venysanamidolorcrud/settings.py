@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vp1czs^jn)5x#m9qf55z=^qepl#z1ec__vspe@9vk1jnidoyi+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,8 +76,16 @@ WSGI_APPLICATION = 'venysanamidolorcrud.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'mongodb+srv://heehoobros:sopita@ramses.laui4hq.mongodb.net/?retryWrites=true&w=majority', # Replace with your MongoDB server address
+            'port': 27017,               # Replace with your MongoDB port if different
+            'username': 'heehoobros', # Replace with your MongoDB username (optional)
+            'password': 'sopita', # Replace with your MongoDB password (optional)
+            'authSource': 'admin', # Replace with your MongoDB authentication database (optional)
+        },
+        'NAME': 'ramses',
     }
 }
 
