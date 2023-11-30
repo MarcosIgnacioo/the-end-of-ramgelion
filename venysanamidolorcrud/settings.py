@@ -74,18 +74,19 @@ WSGI_APPLICATION = 'venysanamidolorcrud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# To use Neon with Django, you have to create a Project on Neon and specify the project connection settings in your settings.py in the same way as for standalone Postgres.
+
+# To use Neon with Django, you have to create a Project on Neon and specify the project connection settings in your settings.py in the same way as for standalone Postgres.
+
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb+srv://heehoobros:sopita@ramses.laui4hq.mongodb.net/?retryWrites=true&w=majority', # Replace with your MongoDB server address
-            'port': 27017,               # Replace with your MongoDB port if different
-            'username': 'heehoobros', # Replace with your MongoDB username (optional)
-            'password': 'sopita', # Replace with your MongoDB password (optional)
-            'authSource': 'admin', # Replace with your MongoDB authentication database (optional)
-        },
-        'NAME': 'ramses',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ramsesdb',
+        'USER': 'MarcosIgnacioo',
+        'PASSWORD': 'KLR6z0mifbEQ',
+        'HOST': 'ep-autumn-water-84805628.us-east-2.aws.neon.tech',
+        'PORT': '5432',
+        'OPTIONS': {'sslmode': 'require'},
     }
 }
 

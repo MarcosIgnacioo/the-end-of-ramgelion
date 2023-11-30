@@ -17,6 +17,9 @@ class Producto(models.Model):
     stars = models.IntegerField()
     image_url = models.CharField(max_length=300)
 
+    def __str__(self) -> str:
+        return self.product_name
+
 
 class OrderedProducts(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

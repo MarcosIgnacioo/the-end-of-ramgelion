@@ -1,15 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import ProductForm
 from .forms import OrderProductForm
+from .models import Producto
 # Create your views here.
 
 
 def home(request):
-    return render(request, "index.html")
+    products = Producto.objects.all()
+    return render(request, "index.html", {
+        'products': products,
+        'iterator': 5
+    })
 
 
 def signup(request):
@@ -23,8 +28,10 @@ def signup(request):
             try:
                 user = User.objects.create_user(
                     username=post_info['email'],
+                    email=post_info['email'],
                     first_name=post_info['name'],
-                    password=post_info['password'])
+                    password=post_info['password'],
+                    last_name=post_info['last_names'])
                 user.save()
 
                 login(request, user)
@@ -86,3 +93,34 @@ def create_orders(request):
             return render(request, 'create_order.html', {
                 'form': OrderProductForm
             })
+
+
+def profile(request):
+    if request.method == 'GET':
+        user = request.user
+        print("gamers")
+        return render(request, 'user.html', {
+            'user_first_name': user.first_name,
+            'user_email': user.email,
+            'user_last_names': user.last_name,
+            'user_first_name': user.first_name,
+        })
+    else:
+        try:
+            user = request.user
+            new_info = request.POST
+            print(len(new_info['email']))
+            form = UserChangeForm(data=request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                print(form)
+            return render(request, 'index.html')
+        except Exception as e:
+            return render(request, "user.html", {"error": e})
+
+
+def product_details(request, product_id):
+    if request.method == 'GET':
+        return render(request, 'product-details.html')
+    else:
+        return render(request, 'product-details.html', {"error": "e"})

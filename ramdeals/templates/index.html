@@ -5,62 +5,10 @@
 
 <body>
     <div class="padre">
-        <div class="seccion-izq">
-            <div class="contenedor-filtros">
-                <section class="info">
-                    <div class="secciones">
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Ropa femenina
-                            </p>
-                        </div>
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Ropa masculina
-                            </p>
-                        </div>
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Electrónicos
-                            </p>
-                        </div>
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Para el día a día
-                            </p>
-                        </div>
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Medicina
-                            </p>
-                        </div>
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Deportes y exterior
-                            </p>
-                        </div>
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Ropa de bebé
-                            </p>
-                        </div>
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Mascutas
-                            </p>
-                        </div>
-                        <div class="secciones">
-                            <p class="encabezado parrafo-informacion">
-                                Salud y belleza
-                            </p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
         <div class="inicio-padre">
             <div class="banner">
-                <img src="recursos/banner.jpg" alt="xbox series x">
+                <img src="https://xxboxnews.blob.core.windows.net/prod/sites/4/MIC332-bluey-16x9-FINAL-c5e8e03b774c2c117cb7-45f0199ca0434a3706c7.png"
+                    alt="xbox series x" id="xbox">
             </div>
         </div>
     </div>
@@ -70,13 +18,14 @@
         </h1>
     </div>
     <div class="productos">
+        {% for product in products %}
         <div class="producto-unique">
-            <img src="recursos/index-1.jpg" alt="Audífonos Beats Studio Buds">
+            <img src={{product.image_url}}>
             <div class="contenido">
                 <div class="div-title">
-                    <h1 class="producto-title">
-                        Audífonos Beats Studio Buds
-                    </h1>
+                    <a class="producto-title" href="#">
+                        {{product.product_name}}
+                    </a>
                 </div>
                 <div class="stars">
                     <span class="fa fa-star checked"></span>
@@ -87,7 +36,7 @@
                 </div>
                 <div class="precio">
                     <h2 class="costo">
-                        $2,899
+                        ${{product.price}}
                     </h2>
                 </div>
                 <div class="comprar">
@@ -100,126 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="producto-unique">
-            <img src="recursos/index-2.webp" alt="Ternurines">
-            <div class="contenido">
-                <div class="div-title">
-                    <a href="product-details.html" class="producto-title">
-                        Ternurines Familia Pingüino
-                    </a>
-                </div>
-                <div class="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star "> 3,322</span>
-                </div>
-                <div class="precio">
-                    <h2 class="costo">
-                        $599
-                    </h2>
-                </div>
-                <div class="comprar">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-carrito">
-                        <a href="#" class="material-symbols-outlined">
-                            shopping_cart
-                        </a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="producto-unique">
-            <img src="recursos/index-3.webp" alt="iPhone 15 Plus">
-            <div class="contenido">
-                <div class="div-title">
-                    <h1 class="producto-title">
-                        Smartphone iPhone 15 Plus
-                    </h1>
-                </div>
-                <div class="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star "> 9,158</span>
-                </div>
-                <div class="precio">
-                    <h2 class="costo">
-                        $21,999
-                    </h2>
-                </div>
-                <div class="comprar">
-                    <button class="btn-comprar existencia">Sin existencias</button>
-                    <button class="btn-carrito">
-                        <a href="#" class="material-symbols-outlined">
-                            shopping_cart
-                        </a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="producto-unique">
-            <img src="recursos/index-4.webp" alt="Audifonos HyperX">
-            <div class="contenido">
-                <div class="div-title">
-                    <h1 class="producto-title">
-                        Audifonos HyperX Cloud Zero
-                    </h1>
-                </div>
-                <div class="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star "> 3,222</span>
-                </div>
-                <div class="precio">
-                    <h2 class="costo">
-                        $3,999
-                    </h2>
-                </div>
-                <div class="comprar">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-carrito">
-                        <a href="#" class="material-symbols-outlined">
-                            shopping_cart
-                        </a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="producto-unique">
-            <img src="recursos/index-5.jpg" alt="Mario Kart 8">
-            <div class="contenido">
-                <div class="div-title">
-                    <h1 class="producto-title">
-                        Mario Kart 8 - Stolen Edition
-                    </h1>
-                </div>
-                <div class="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star "> 952</span>
-                </div>
-                <div class="precio">
-                    <h2 class="costo">
-                        $1,099
-                    </h2>
-                </div>
-                <div class="comprar">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-carrito">
-                        <a href="#" class="material-symbols-outlined">
-                            shopping_cart
-                        </a>
-                    </button>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <div class="ver">
         <div class="accion">
@@ -230,8 +60,9 @@
     </div>
     <div class="hijo-banner">
         <div class="banner-dos">
-            <a href="https://www.youtube.com/watch?v=gUKcqfkDmME">
-                <img src="recursos/beats.png" alt="beats audifonos">
+            <a href="">
+                <img src="https://www.beatsbydre.com/content/dam/beats-support/global/images/og/beats-studio-buds-global-og-image.jpg"
+                    alt="beats audifonos">
             </a>
         </div>
     </div>
