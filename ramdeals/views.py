@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserChangeForm
@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import ProductForm
 from .forms import OrderProductForm
 from .models import Producto
+from django.contrib.auth.hashers import check_password
 # Create your views here.
 
 
@@ -109,18 +110,87 @@ def profile(request):
         try:
             user = request.user
             new_info = request.POST
-            print(len(new_info['email']))
-            form = UserChangeForm(data=request.POST, instance=request.user)
-            if form.is_valid():
-                form.save()
-                print(form)
+
+            new_email = new_info['email']
+            new_first_names = new_info['names']
+            new_last_names = new_info['last_names']
+            actual_password = new_info['actual_password']
+            new_password = new_info['new_password']
+            confirm_new_password = new_info['confirm_new_password']
+            adress = new_info['adress']
+            cellphone_number = new_info['cellphone_number']
+
+            if len(new_email) != 0:
+                user.username = new_email
+                user.email = new_email
+
+            if len(new_first_names) != 0:
+                user.first_name = new_first_names
+
+            if len(new_last_names) != 0:
+                user.last_name = new_last_names
+
+            if len(actual_password) != 0:
+                if (check_password(actual_password, user.password)):
+                    if (new_password == confirm_new_password):
+                        print('---------------------------')
+                        print("entramos aqui")
+                        user.set_password(new_password)
+            user.save()
+            print("porfavor si esto sale vamos masoemnso bien")
+            # TODO mandar un response sde que las contrase;as no coinciden
+            # TODO mandar un response de que la contras;ea vieja no coincide
+
             return render(request, 'index.html')
         except Exception as e:
             return render(request, "user.html", {"error": e})
 
 
 def product_details(request, product_id):
+    print(product_id)
     if request.method == 'GET':
-        return render(request, 'product-details.html')
+        product = Producto.objects.get(pk=product_id)
+        # Pasar esto a que sea una funcion que tenga de parametro el producto y retorne un arreglo d todas sus propiedades luego aqui hacerle deestructuring para tenerlo mas clean
+        price = product.price
+        product_name = product.product_name
+        category = product.category
+        description = product.description
+        stock = product.stock
+        discount = product.discount
+        stars = product.stars
+        image_url = product.image_url
+
+        return render(request, 'product-details.html', {
+            'product_id': product_id,
+            'product_name': product_name,
+            'price': price,
+            'category': category,
+            'description': description,
+            'stock': stock,
+            'discount': discount,
+            'stars': stars,
+            'image_url': image_url
+        })
     else:
-        return render(request, 'product-details.html', {"error": "e"})
+        product = Producto.objects.get(pk=product_id)
+        # Pasar esto a que sea una funcion que tenga de parametro el producto y retorne un arreglo d todas sus propiedades luego aqui hacerle deestructuring para tenerlo mas clean
+        price = product.price
+        product_name = product.product_name
+        category = product.category
+        description = product.description
+        stock = product.stock
+        discount = product.discount
+        stars = product.stars
+        image_url = product.image_url
+
+        return render(request, 'product-details.html', {
+            'product_id': product_id,
+            'product_name': product_name,
+            'price': price,
+            'category': category,
+            'description': description,
+            'stock': stock,
+            'discount': discount,
+            'stars': stars,
+            'image_url': image_url
+        })

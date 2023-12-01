@@ -1,5 +1,42 @@
 {% extends 'base.html' %} {% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/product-details.css' %}" />
 <title>RamDeals</title>
-
-<h1>quepedo</h1>
+<form action="/product-details/{{product_id}}/" method="POST">
+    {% csrf_token %}
+    <div class="product-details-container">
+        <img src={{image_url}} alt="">
+        <div class="product-info">
+            <h3 id="product_name">{{product_name}}</h3>
+            <div class="product-status">
+                <span>⭐</span>
+                <span>Stock: {{stock}}</span>
+            </div>
+            <div class="price-container">
+                {% if discount > 0 %}
+                <span id="price">${{price}}}</span>
+                <span id="og_price">${{price}}</span>
+                {% else %}
+                <span id="price">${{price}}</span>
+                {% endif %}
+            </div>
+            <p> {{description}} </p>
+            {% if stock > 0 %}
+            <div class="buy-container">
+                <input type="number" id="quantity" min="1" max="{{stock}}" placeholder="1" value="1">
+                <button id="buy-button"> ¡Comprar ahora!</button>
+                <a class="material-symbols-outlined md-60" id="cart-icon">shopping_cart</a>
+            </div>
+            {% else %}
+            <span id="out-stock">No hay stock</span>
+            {% endif %}
+            <div class="delivery">
+                <h2>Entrega gratis</h2>
+                <h4>*Solo a los habitantes de Chametla</h4>
+                <h2>Devolucion disponible</h2>
+                <h4>*Solo a los habitantes de Chametla</h4>
+            </div>
+        </div>
+    </div>
+</form>
 {% endblock %}

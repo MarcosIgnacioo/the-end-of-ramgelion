@@ -23,7 +23,7 @@
             <img src={{product.image_url}}>
             <div class="contenido">
                 <div class="div-title">
-                    <a class="producto-title" href="#">
+                    <a class="producto-title" href="{% url 'product-details' product_id=product.id %}">
                         {{product.product_name}}
                     </a>
                 </div>
