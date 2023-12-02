@@ -13,6 +13,8 @@ from .managers import get_current_cart
 
 def home(request):
     products = Producto.objects.all()
+    for product in products:
+        product.final_price = round(product.final_price, 2)
     return render(request, "index.html", {
         'products': products,
         'iterator': 5
@@ -162,8 +164,10 @@ def product_details(request, product_id):
         discount = product.discount
         stars = product.stars
         image_url = product.image_url
+        final_price = round(product.final_price, 2)
 
         return render(request, 'product-details.html', {
+            'final_price': final_price,
             'is_authenticated': is_authenticated,
             'product_id': product_id,
             'product_name': product_name,

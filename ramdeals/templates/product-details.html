@@ -14,8 +14,8 @@
             </div>
             <div class="price-container">
                 {% if discount > 0 %}
-                <span id="price">${{price}}}</span>
-                <span id="og_price">${{price}}</span>
+                <small id="og_price" style="text-decoration: line-through;">${{price}}</small>
+                <span id="price">${{final_price}}</span>
                 {% else %}
                 <span id="price">${{price}}</span>
                 {% endif %}
