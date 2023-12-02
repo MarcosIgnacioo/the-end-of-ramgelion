@@ -75,6 +75,10 @@ p {
     cursor: pointer;
 }
 
+a {
+    cursor: pointer;
+}
+
 .material-symbols-outlined.md-60 {
     color: #24469f;
     font-size: 45px;

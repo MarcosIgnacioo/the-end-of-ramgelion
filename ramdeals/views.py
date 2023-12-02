@@ -5,8 +5,9 @@ from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import ProductForm
 from .forms import OrderProductForm
-from .models import Producto
+from .models import Producto, Carts, CartsItems, PurchasedProducts
 from django.contrib.auth.hashers import check_password
+from .managers import get_current_cart
 # Create your views here.
 
 
@@ -147,20 +148,23 @@ def profile(request):
 
 
 def product_details(request, product_id):
-    print(product_id)
+    user = request.user
+    is_authenticated = user.is_authenticated
+    product = Producto.objects.get(pk=product_id)
+    stock = product.stock
+
     if request.method == 'GET':
-        product = Producto.objects.get(pk=product_id)
         # Pasar esto a que sea una funcion que tenga de parametro el producto y retorne un arreglo d todas sus propiedades luego aqui hacerle deestructuring para tenerlo mas clean
         price = product.price
         product_name = product.product_name
         category = product.category
         description = product.description
-        stock = product.stock
         discount = product.discount
         stars = product.stars
         image_url = product.image_url
 
         return render(request, 'product-details.html', {
+            'is_authenticated': is_authenticated,
             'product_id': product_id,
             'product_name': product_name,
             'price': price,
@@ -172,25 +176,33 @@ def product_details(request, product_id):
             'image_url': image_url
         })
     else:
+        quantity = float(request.POST['quantity'])
         product = Producto.objects.get(pk=product_id)
-        # Pasar esto a que sea una funcion que tenga de parametro el producto y retorne un arreglo d todas sus propiedades luego aqui hacerle deestructuring para tenerlo mas clean
-        price = product.price
-        product_name = product.product_name
-        category = product.category
-        description = product.description
-        stock = product.stock
-        discount = product.discount
-        stars = product.stars
-        image_url = product.image_url
 
-        return render(request, 'product-details.html', {
-            'product_id': product_id,
-            'product_name': product_name,
-            'price': price,
-            'category': category,
-            'description': description,
-            'stock': stock,
-            'discount': discount,
-            'stars': stars,
-            'image_url': image_url
+        purchases = [
+            {
+                'product': product,
+                'quantity': quantity,
+                'subtotal': round(product.final_price*float(quantity), 4)
+            },
+        ]
+        try:
+            if (quantity > stock):
+                quantity = stock
+            new_purchase = PurchasedProducts(
+                user=user, product=product, quantity=quantity, total=quantity*product.final_price*float(quantity))
+            new_purchase.save()
+        except Exception as e:
+            print("//////////////////////////////////////////////////////////")
+            print(type(stock))
+            print(type(quantity))
+            print(e)
+            print("//////////////////////////////////////////////////////////")
+        return render(request, 'purchase-confirmation.html', {
+            'purchases': purchases,
+            'subtotal': product.final_price*quantity
         })
+
+
+def buy_product(request):
+    return "holaj"

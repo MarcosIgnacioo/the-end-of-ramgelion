@@ -23,9 +23,13 @@
             <p> {{description}} </p>
             {% if stock > 0 %}
             <div class="buy-container">
-                <input type="number" id="quantity" min="1" max="{{stock}}" placeholder="1" value="1">
+                {% if is_authenticated %}
+                <input type="number" id="quantity" min="1" max="{{stock}}" placeholder="1" value="1" name="quantity">
                 <button id="buy-button"> ¡Comprar ahora!</button>
                 <a class="material-symbols-outlined md-60" id="cart-icon">shopping_cart</a>
+                {% else %}
+                <a id="signin-link" href="{% url 'signin' %}">Inicie sesión</a>
+                {% endif %}
             </div>
             {% else %}
             <span id="out-stock">No hay stock</span>

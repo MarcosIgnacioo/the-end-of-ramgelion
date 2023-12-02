@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'venysanamidolorcrud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ramsesdb',
+        'NAME': 'porfuncionanoquierorehacertodo',
         'USER': 'MarcosIgnacioo',
         'PASSWORD': 'KLR6z0mifbEQ',
         'HOST': 'ep-autumn-water-84805628.us-east-2.aws.neon.tech',

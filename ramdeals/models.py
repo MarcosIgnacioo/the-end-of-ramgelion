@@ -1,6 +1,5 @@
 from django.db import models
 import uuid
-
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -12,13 +11,35 @@ class Producto(models.Model):
     category = models.CharField(max_length=300)
     description = models.CharField(max_length=300)
     price = models.FloatField()
-    stock = models.BigIntegerField()
     discount = models.FloatField()
+    final_price = models.FloatField(default=0.0)
+    stock = models.BigIntegerField()
     stars = models.IntegerField()
     image_url = models.CharField(max_length=300)
 
     def __str__(self) -> str:
         return self.product_name
+
+
+class Carts(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    total = models.FloatField()
+    purchase_date = models.DateTimeField(auto_now_add=True)
+    is_finished = models.BooleanField(default=False)
+
+
+class CartsItems(models.Model):
+    cart = models.ForeignKey(Carts, on_delete=models.CASCADE)
+    product = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    total = models.FloatField(default=0)
+
+
+class PurchasedProducts(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    total = models.FloatField()
 
 
 class OrderedProducts(models.Model):
@@ -27,6 +48,12 @@ class OrderedProducts(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     purchase_date = models.DateTimeField(auto_now_add=True)
+
+
+class ProductsCarts(models.Model):
+    cart = models.ForeignKey(Carts, on_delete=models.CASCADE)
+    product = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    amount = models.FloatField()
 
 
 class Users(models.Model):

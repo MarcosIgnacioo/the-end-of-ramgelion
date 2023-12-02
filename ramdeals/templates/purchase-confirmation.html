@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    <link rel="stylesheet" href="../static/styles/purchase-confirmation.css">
-    <title>RamDeals</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/purchase-confirmation.css' %}" />
+<title>RamDeals</title>
 </head>
 
 <body>
@@ -9,7 +10,6 @@
         <div class="prev-sites">
             <span>
                 <a href="./index.html">Inicio</a>
-                <a href="./shopping-cart.html">Carrito</a>
             </span>
         </div>
         <div class="conf-container">
@@ -26,43 +26,26 @@
                         <th>Cantidad</th>
                         <th>Subtotal</th>
                     </tr>
+                    {% for purchase in purchases %}
                     <tr>
                         <td>
                             <div class="item-info">
-                                <img src="./recursos/monitor.png" alt="" class="cart-images">
+                                <img src="{{purchase.product.image_url}}" alt="" class="cart-images">
                                 <div class="item-details">
-                                    <p>Monitor IPS 165hz</p>
-                                    <small>Precio: $6500</small>
-                                    <a href="" class="remove">Quitar</a>
+                                    <p>{{purchase.product.product_name}}</p>
+                                    <small>Precio: ${{purchase.product.final_price}}</small>
                                 </div>
                             </div>
                         </td>
-                        <td><input type="number" placeholder="1"></td>
-                        <td class="total-price">$6500</td>
+                        <td><input placeholder="{{purchase.quantity}}" onkeydown="return false" readonly></td>
+                        <td class="total-price"> {{purchase.subtotal}} </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="item-info">
-                                <img src="./recursos/monitor.png" alt="" class="cart-images">
-                                <div class="item-details">
-                                    <p>Monitor IPS 165hz</p>
-                                    <small>Precio: $6500</small>
-                                    <a href="" class="remove">Quitar</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="number" placeholder="1"></td>
-                        <td class="total-price">$6500</td>
-                    </tr>
+                    {% endfor %}
                 </thead>
                 <tbody>
                 </tbody>
             </table>
             <div class="purchase-summary">
-                <div class="coupon-section">
-                    <input type="text" placeholder="Código de cupón">
-                    <button>Aplicar cupón</button>
-                </div>
                 <div class="total-purchase">
                     <table class="total-table">
                         <caption>Total de la compra</caption>
@@ -70,7 +53,7 @@
                             <td>
                                 Subtotal
                             </td>
-                            <td class="total-price">$7500</td>
+                            <td class="total-price">${{subtotal}}</td>
                         </tr>
                         <tr>
                             <td>
@@ -82,7 +65,7 @@
                             <td>
                                 Total
                             </td>
-                            <td class="total-price">$7500</td>
+                            <td class="total-price">${{subtotal}}</td>
                         </tr>
                     </table>
                 </div>
