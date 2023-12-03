@@ -28,5 +28,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('product-details/<uuid:product_id>/',
          views.product_details, name='product-details'),
-
+    path('shopping-cart/', views.cart, name='shopping-cart'),
 ]

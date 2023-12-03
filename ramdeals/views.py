@@ -7,7 +7,7 @@ from .forms import ProductForm
 from .forms import OrderProductForm
 from .models import Producto, Carts, CartsItems, PurchasedProducts
 from django.contrib.auth.hashers import check_password
-from .managers import get_current_cart
+from .managers import get_current_cart, finish_cart_purchase
 # Create your views here.
 
 
@@ -165,6 +165,9 @@ def product_details(request, product_id):
         stars = product.stars
         image_url = product.image_url
         final_price = round(product.final_price, 2)
+        stars_array = []
+        for i in range(stars):
+            stars_array.append("⭐")
 
         return render(request, 'product-details.html', {
             'final_price': final_price,
@@ -176,10 +179,10 @@ def product_details(request, product_id):
             'description': description,
             'stock': stock,
             'discount': discount,
-            'stars': stars,
+            'stars': stars_array,
             'image_url': image_url
         })
-    else:
+    elif request.POST.get('shop') == 'buy_now':
         quantity = float(request.POST['quantity'])
         product = Producto.objects.get(pk=product_id)
 
@@ -197,14 +200,49 @@ def product_details(request, product_id):
                 user=user, product=product, quantity=quantity, total=quantity*product.final_price*float(quantity))
             new_purchase.save()
         except Exception as e:
-            print("//////////////////////////////////////////////////////////")
-            print(type(stock))
-            print(type(quantity))
+            print("De seguro esto no sale mal")
             print(e)
-            print("//////////////////////////////////////////////////////////")
         return render(request, 'purchase-confirmation.html', {
             'purchases': purchases,
             'subtotal': product.final_price*quantity
+        })
+    elif request.POST.get('shop') == 'add_to_cart':
+        quantity = float(request.POST['quantity'])
+        cart = get_current_cart(user)
+        new_cart_addition = CartsItems(cart_id=cart.id, product_id=product.id, quantity=quantity, total=round(
+            product.final_price*float(quantity), 4))
+        new_cart_addition.save()
+        print("cart")
+        return redirect('home')
+
+
+def cart(request):
+    user = request.user
+    is_authenticated = user.is_authenticated
+    if is_authenticated == False:
+        return redirect('signin')
+    current_cart = get_current_cart(user)
+    products_in_cart = CartsItems.objects.filter(cart=current_cart)
+    unwrapped_products = []
+    for p in products_in_cart:
+        p.product.final_price = round(p.product.final_price, 2)
+        p.product.quantity = p.quantity
+        unwrapped_products.append(p.product)
+
+    if request.method == 'GET':
+        # Pasar esto a que sea una funcion que tenga de parametro el producto y retorne un arreglo d todas sus propiedades luego aqui hacerle deestructuring para tenerlo mas clean
+
+        return render(request, 'shopping-cart.html', {
+            'products': unwrapped_products
+        })
+    else:
+        for p in unwrapped_products:
+            final_quantity = float(request.POST[p.product_name])
+            purchase = PurchasedProducts(
+                user=user, product=p, quantity=final_quantity, total=(p.final_price*final_quantity))
+            purchase.save()
+            finish_cart_purchase(user)
+        return render(request, 'purchase-confirmation.html', {
         })
 
 

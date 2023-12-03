@@ -20,7 +20,9 @@
     <div class="productos">
         {% for product in products %}
         <div class="producto-unique">
-            <img src={{product.image_url}}>
+            <a href="{% url 'product-details' product_id=product.id %}" id="image_url">
+                <img src={{product.image_url}}>
+            </a>
             <div class="contenido">
                 <div class="div-title">
                     <a class="producto-title" href="{% url 'product-details' product_id=product.id %}">
@@ -39,6 +41,7 @@
                         ${{ product.final_price }}
                     </h2>
                 </div>
+                {% if product.stock > 0 %}
                 <div class="comprar">
                     <button class="btn-comprar">Comprar ahora</button>
                     <button class="btn-carrito">
@@ -47,6 +50,11 @@
                         </a>
                     </button>
                 </div>
+                {% else %}
+                <div>
+                    <span id="out-stock">No hay stock</span>
+                </div>
+                {% endif %}
             </div>
         </div>
         {% endfor %}

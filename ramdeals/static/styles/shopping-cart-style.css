@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,900&display=swap');
+
 * {
     font-family: Raleway, sans-serif;
 }
 
-main{
+main {
     background-color: #ecebeb;
     font-size: 3rem;
 }
-.prev-sites{
+
+.prev-sites {
     padding-top: 1%;
     margin: 0 1% 1% 10%;
 }
@@ -19,31 +21,35 @@ main{
     align-items: center;
 }
 
-table{
+table {
     width: 60vw;
     border-collapse: collapse;
 }
-.purchase-summary{
-    margin-top: 3%;
+
+.purchase-summary {
     width: 60vw;
     text-align: left;
 }
+
 .products-table td {
     padding: 10px 5px;
 }
-.products-table td input{
+
+.products-table td input {
     width: 60px;
     height: 30px;
     padding: 5px;
 }
-.coupon-section input{
+
+.coupon-section input {
     font-size: 1.6rem;
     padding: 1% 3% 1% 1%;
     border-radius: 5px;
     border: none;
-    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.155); 
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.155);
 }
-.coupon-section button{
+
+.coupon-section button {
     margin-left: 5px;
     cursor: pointer;
     font-size: 1.6rem;
@@ -52,132 +58,166 @@ table{
     color: rgb(237, 237, 237);
     background-color: #f6a61d;
     border-radius: 5px;
-    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.155); 
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.155);
     border: none;
 }
-.item-info{
+
+.item-info {
     display: flex;
     flex-wrap: wrap;
 }
-.table-container *{
+
+.table-container * {
     font-size: 2.4rem;
 }
-.item-details small, a{
+
+.item-details small,
+a {
     font-size: 1.6rem;
 }
-.remove{
+
+.remove {
     font-size: 1.6rem;
     color: red;
 }
-.cart-images{
+
+.cart-images {
     width: 50px;
     height: 39px;
     margin-top: 2%;
     margin-right: 5%;
 }
-.products-table th{
+
+.products-table th {
     text-align: left;
     padding: 5px;
     color: #f7f6f6;
     background-color: #004AAD;
 }
-.table-data-container{
+
+.table-data-container {
     margin: 5% 0 5% 0;
     background-color: white;
     border: 1px solid #ccc;
 }
-.purchase-summary .total-purchase{
+
+.purchase-summary .total-purchase {
     width: fit-content;
     font-size: 2.4rem;
     border-radius: 5px;
 }
-small, .total-price{
+
+small,
+.total-price {
     font-family: Poppins;
 }
-.total-purchase{
-    margin: 5% 0 5% 0;    
+
+.total-purchase {
+    margin: 5% 0 5% 0;
 }
-.total-table caption{
+
+.total-table caption {
     padding: 2%;
     text-align: left;
 }
-.total-table tr td{
+
+.total-table tr td {
     padding: 2%;
     border-bottom: 1px solid #ccc;
 }
-.final-actions{
+
+.final-actions {
     display: flex;
     justify-content: space-between;
 }
-.total-purchase button{
+
+.total-purchase button {
     gap: 5%;
     margin-top: 2%;
     width: 30%;
     max-width: 50%;
     color: white;
+    font-weight: bold2;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     font-size: 1.6rem;
-    background-color: #24469F;
+    background-color: #f6a61d;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.155);
     padding: 2%;
 }
-#cancel-button{
+
+#cancel-button {
     background-color: #d42a54;
 }
-@media screen and (max-width:810px){
-    .total-purchase *{
+
+@media screen and (max-width:810px) {
+    .total-purchase * {
         font-size: 1.4rem;
     }
-    .prev-sites{
+
+    .prev-sites {
         display: none;
     }
-    .products-table thead tr th{
+
+    .products-table thead tr th {
         font-size: 1.6rem;
     }
-    .products-table thead tr th{
+
+    .products-table thead tr th {
         font-size: 1.6rem;
     }
+
     .products-table td {
         font-size: 1.5rem;
         padding: 0 2vw;
     }
-    .purchase-summary .coupon-section, .total-purchase{
+
+    .purchase-summary .coupon-section,
+    .total-purchase {
         font-size: 2.4rem;
     }
-    .purchase-summary{
+
+    .purchase-summary {
         flex-direction: column;
         justify-content: left;
         align-items: normal;
         margin: 5%;
     }
-    .products-table{
+
+    .products-table {
         width: 100vw;
         font-size: 1.2rem;
     }
+
     .table-container {
         justify-content: left;
         align-items: center;
     }
-    .total-purchase button{
+
+    .total-purchase button {
         font-size: 1.1rem;
     }
-    .coupon-section{
+
+    .coupon-section {
         margin: 10% 0 10% 0;
     }
-    .coupon-section button{
+
+    .coupon-section button {
         font-size: 1.2rem;
-        margin:10px 0 0 0;
+        margin: 10px 0 0 0;
         padding: 5%;
     }
 }
-@media screen and (max-width:280px){
-    
+
+@media screen and (max-width:280px) {
+
     .table-container {
         justify-content: left;
         align-items: normal;
     }
-    .purchase-summary{
+
+    .purchase-summary {
         margin-bottom: 5%;
     }
 }

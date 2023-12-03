@@ -7,21 +7,21 @@
     font-family: 'Raleway', sans-serif;
 }
 
-body{
+body {
     background-color: rgb(236, 235, 235);
 }
 
 
-.secciones .encabezado{
+.secciones .encabezado {
     font-weight: bold;
     padding-top: 5%;
 }
 
-.padre{
+.padre {
     display: flex;
 }
 
-.seccion-izq{
+.seccion-izq {
     flex: 0.3;
     padding-top: 2%;
     margin-left: 1%;
@@ -29,14 +29,15 @@ body{
     border-right: 1px solid lightgrey;
 }
 
-.contenedor-filtros{
+.contenedor-filtros {
     height: 20%;
 }
 
-.secciones p{
+.secciones p {
     font-size: 20px;
     padding-bottom: 5%;
 }
+
 .banner {
     display: flex;
     justify-content: center;
@@ -44,20 +45,34 @@ body{
 }
 
 
-.encabezado{
+.encabezado {
     font-weight: bold;
     padding-top: 5%;
 }
 
-.inicio-padre{
-    flex: 2; 
+.inicio-padre {
+    flex: 2;
     display: flex;
     flex-direction: column;
 
     padding-top: 2%;
 }
 
-.banner img{
+#image_url {
+    margin: 0 0 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+#out-stock {
+    color: darkred;
+    font-size: 3rem;
+}
+
+.banner img {
     width: 80%;
     height: auto;
 }
@@ -70,13 +85,13 @@ body{
     margin-top: 40px;
 }
 
-.productos{
+.productos {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.producto-unique{
+.producto-unique {
     width: 30vh;
     height: 45vh;
     margin: 20px;
@@ -90,47 +105,50 @@ body{
     border: 1px solid lightgray;
 }
 
-.checked{
+.checked {
     color: orange;
 }
-#xbox{
+
+#xbox {
     width: 50%;
     height: auto;
 }
-.producto-unique img{
+
+.producto-unique img {
     width: 70%;
     overflow: hidden;
 }
 
-.btn-carrito a{
+.btn-carrito a {
     margin-left: 8px;
     text-decoration: none;
     color: white;
 }
 
-.producto-title{
+.producto-title {
     font-size: 20px;
 }
 
-.texto-producto p{
+.texto-producto p {
     font-size: 1.6rem;
 }
 
-.contenido div{
+.contenido div {
     padding-bottom: 2%;
     margin-left: 5px;
     margin-right: 5px;
 }
 
 
-.precio h2{
+.precio h2 {
     font-size: 2.4rem;
 }
-.stars{
+
+.stars {
     font-size: 1.6rem;
 }
 
-.btn-comprar{
+.btn-comprar {
     margin-top: 5%;
     margin-right: 5%;
     background-color: #004aad;
@@ -142,12 +160,13 @@ body{
     border-radius: 3px;
 }
 
-.existencia{
-    background-color: gray; /* Cambia el color a gris o el que desees */
+.existencia {
+    background-color: gray;
+    /* Cambia el color a gris o el que desees */
     cursor: not-allowed;
 }
 
-.btn-carrito{
+.btn-carrito {
     margin-top: 5%;
     border-radius: 100%;
     border: none;
@@ -166,7 +185,7 @@ body{
     padding-right: 10%;
 }
 
-.ver{
+.ver {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,7 +193,7 @@ body{
     padding-top: 1%;
 }
 
-.accion button{
+.accion button {
     font-size: 2.2rem;
     width: 290px;
     height: 70px;
@@ -185,13 +204,13 @@ body{
     background-color: #004aad;
 }
 
-.hijo-banner{
+.hijo-banner {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.banner-dos a{
+.banner-dos a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -199,12 +218,12 @@ body{
     padding-top: 2%;
 }
 
-.banner-dos img{
+.banner-dos img {
     max-width: 60%;
     height: auto;
 }
 
-.ver-2{
+.ver-2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,48 +231,51 @@ body{
     padding-bottom: 3%;
 }
 
-@media screen and (max-width:420px){
-    .inicio-padre{
+@media screen and (max-width:420px) {
+    .inicio-padre {
         padding-top: 0;
         padding-left: 0;
     }
-    .seccion-izq{
+
+    .seccion-izq {
         display: none;
     }
 
-    .contenedor-filtros{
+    .contenedor-filtros {
         display: none;
     }
 
-    .banner-dos img{
+    .banner-dos img {
         max-width: 100%;
         padding-top: 8%;
         padding-left: 8%;
         height: auto;
     }
 
-    .banner-dos img{
-        width: 100%;  /* Haz que la imagen ocupe el 100% del ancho del contenedor */
-        height: auto; /* Para mantener la proporción original de la imagen */
+    .banner-dos img {
+        width: 100%;
+        /* Haz que la imagen ocupe el 100% del ancho del contenedor */
+        height: auto;
+        /* Para mantener la proporción original de la imagen */
     }
 
-    .productos-all{
+    .productos-all {
         justify-content: center;
         align-items: center;
     }
 
-    .producto-unique{
+    .producto-unique {
         height: 50vh;
         width: 32vh;
     }
 
-    .accion button{
+    .accion button {
         font-size: 2.2rem;
         width: 280px;
         height: 70px;
     }
 
-    .ver-2{ 
+    .ver-2 {
         padding-bottom: 10%;
     }
 
