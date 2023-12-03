@@ -5,8 +5,6 @@ from .models import Carts, Producto
 def get_current_cart(user):
     user_id = user.id
     user_carts = Carts.objects.filter(Q(user=user_id))
-    print("//////////////////////////////////////")
-    print(user_carts)
     if (user_carts.filter(Q(is_finished=False)).first() != None):
         return user_carts.filter(Q(is_finished=False)).first()
     else:
