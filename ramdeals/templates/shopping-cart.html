@@ -28,14 +28,15 @@
                                     <img src="{{product.image_url}}" alt="" class="cart-images">
                                     <div class="item-details">
                                         <p>{{product}}</p>
-                                        <small>Precio: ${{product.final_price}}</small>
+                                        <small>Precio: $</small>
+                                        <small id="unit-price">{{product.final_price}}</small>
                                         <a href="" class="remove">Quitar</a>
                                     </div>
                                 </div>
                             </td>
                             <td><input type="number" placeholder="1" max="{{product.stock}}" min="1"
-                                    value="{{product.quantity}}" name="{{product}}"></td>
-                            <td class="total-price">$HACWER CON JS</td>
+                                    value="{{product.quantity}}" name="{{product}}" id="pq"></td>
+                            <td class="total-price">$0</td>
                         </tr>
                         {% endfor %}
                     </thead>
@@ -50,7 +51,7 @@
                                 <td>
                                     Subtotal
                                 </td>
-                                <td class="total-price">$HACER CON JS</td>
+                                <td class="total-price">$0</td>
                             </tr>
                             <tr>
                                 <td>
@@ -62,11 +63,10 @@
                                 <td>
                                     Total
                                 </td>
-                                <td class="total-price">$HACER CON JS</td>
+                                <td class="total-price">$0</td>
                             </tr>
                         </table>
                         <div class="final-actions">
-                            <button id="cancel-button">Cancelar compra</button>
                             <button id="buy-button">Realizar compra</button>
                         </div>
                     </div>
@@ -76,4 +76,5 @@
         </div>
     </main>
 </body>
+<script src="../static/scripts/calcular.js"></script>
 {% endblock %}

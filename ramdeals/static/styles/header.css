@@ -71,6 +71,8 @@ a:hover {
 }
 
 .box {
+    display: flex;
+    align-content: center;
     border-radius: 5px;
     padding: 5px;
     background-color: #F5F5F5;
@@ -86,6 +88,12 @@ a:hover {
     outline: none;
     border: none;
     background-color: #F5F5F5;
+}
+
+#search-gamer {
+    margin-left: 35rem;
+    background-color: #F5F5F5;
+    border: none;
 }
 
 .box a {

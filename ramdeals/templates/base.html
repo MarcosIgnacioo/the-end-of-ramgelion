@@ -35,7 +35,7 @@
     <nav class="desktop-nav">
       <ul class="ul">
         <li class="logo">
-          <img src="./recursos/Untitled.svg" alt="" />
+          <img src="https://pbs.twimg.com/media/GAg_IbiacAAWldM.png?name=orig" alt="" />
           <div class="page-title">
             <span class="title" id="yellow">RAM <span class="title" id="blue">DEALS</span></span>
           </div>
@@ -53,7 +53,7 @@
           <form action="/search/" method="POST">
             {% csrf_token %}
             <input type="text" placeholder="¿Qué es lo que buscas?" class="search-box" name="product-search" />
-            <button class="material-symbols-outlined"> search </button>
+            <button class="material-symbols-outlined" id="search-gamer"> search </button>
           </form>
         </li>
         <li class="icons">
@@ -84,9 +84,6 @@
         <div class="page-title">
           <span class="title" id="yellow">RAM <span class="title" id="blue">DEALS</span></span>
         </div>
-        <button class="hamburger">
-          <div class="bar">.</div>
-        </button>
       </div>
     </div>
     <nav class="mobile-nav">
@@ -121,9 +118,7 @@
     </nav>
     <div class="box" id="search-m-container">
       <input type="text" placeholder="¿Qué es lo que buscas?" class="search-box" />
-      <a href="search.html" class="material-symbols-outlined" id="search-m">
-        search
-      </a>
+
     </div>
   </header>
   {% block content %} {% endblock %}
