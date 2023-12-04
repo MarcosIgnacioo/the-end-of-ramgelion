@@ -42,14 +42,19 @@
                     </h2>
                 </div>
                 {% if product.stock > 0 %}
-                <div class="comprar">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-carrito">
-                        <a href="#" class="material-symbols-outlined">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="comprar">
+                        <input type="text" value="{{product.id}}" name="product-id" hidden>
+                        <input type="text" value="{{product.product_name}}" name="prodoct-name" hidden>
+                        <input type="text" value="{{product.final_price}}" name="product-price" hidden>
+                        <input type="text" value="{{product.image_url}}" name="product-image" hidden>
+                        <input type="text" value="{{product.stock}}" name="product-stock" hidden>
+                        <button class="material-symbols-outlined btn-carrito" name="shop" value="add_to_cart">
                             shopping_cart
-                        </a>
-                    </button>
-                </div>
+                        </button>
+                    </div>
+                </form>
                 {% else %}
                 <div>
                     <span id="out-stock">No hay stock</span>

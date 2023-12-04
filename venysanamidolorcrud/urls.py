@@ -29,4 +29,6 @@ urlpatterns = [
     path('product-details/<uuid:product_id>/',
          views.product_details, name='product-details'),
     path('shopping-cart/', views.cart, name='shopping-cart'),
+    path('purchase-history/', views.purchase_history, name='purchase-history'),
+    path('search/', views.search, name='search'),
 ]

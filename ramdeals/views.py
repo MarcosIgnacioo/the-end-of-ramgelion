@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from .utilities import buy_now, add_to_the_cart
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserChangeForm
@@ -13,6 +14,26 @@ from .managers import get_current_cart, finish_cart_purchase
 
 def home(request):
     products = Producto.objects.all()
+    user = request.user
+    is_authenticated = user.is_authenticated
+    post_info = request.POST
+
+    if request.POST.get('shop') == 'add_to_cart':
+        product_id = post_info['product-id']
+        product = Producto.objects.get(id=product_id)
+        try:
+            add_to_the_cart(user, product, 1)
+        except Exception as e:
+            print(e)
+    elif request.POST.get('shop') == 'buy_now':
+        quantity = 1
+        product_id = post_info['product-id']
+        stock = int(post_info['product-stock'])
+        product = Producto.objects.get(id=product_id)
+        try:
+            buy_now(request, product, quantity, stock, user)
+        except Exception as e:
+            print(e)
     for product in products:
         product.final_price = round(product.final_price, 2)
     return render(request, "index.html", {
@@ -206,14 +227,26 @@ def product_details(request, product_id):
             'purchases': purchases,
             'subtotal': product.final_price*quantity
         })
+
     elif request.POST.get('shop') == 'add_to_cart':
         quantity = float(request.POST['quantity'])
         cart = get_current_cart(user)
-        new_cart_addition = CartsItems(cart_id=cart.id, product_id=product.id, quantity=quantity, total=round(
-            product.final_price*float(quantity), 4))
-        new_cart_addition.save()
-        print("cart")
-        return redirect('home')
+        current_cart_items = CartsItems.objects.filter(cart=cart)
+        is_already_in_cart = False
+        already_item = ''
+        for cart_item in current_cart_items:
+            if cart_item.product == product:
+                already_item = cart_item
+                is_already_in_cart = True
+        print(is_already_in_cart)
+        if is_already_in_cart:
+            already_item.quantity = already_item.quantity + quantity
+            already_item.save()
+        else:
+            new_cart_addition = CartsItems(cart_id=cart.id, product_id=product.id, quantity=quantity, total=round(
+                product.final_price*float(quantity), 4))
+            new_cart_addition.save()
+            return redirect('home')
 
 
 def cart(request):
@@ -246,5 +279,46 @@ def cart(request):
         })
 
 
-def buy_product(request):
-    return "holaj"
+def purchase_history(request):
+    purchase_history = PurchasedProducts.objects.all().filter(user_id=request.user)
+    purchase_history = purchase_history[::-1]
+    for purchase in purchase_history:
+        product = Producto.objects.get(id=purchase.product_id)
+        purchase.image_url = product.image_url
+        purchase.product_name = product.product_name
+    return render(request, 'purchase-history.html', {
+        'products': purchase_history
+    })
+
+
+def search(request):
+    user = request.user
+    products = Producto.objects.all()
+    if request.method == "GET":
+        return render(request, 'search.html', {
+            'products': products
+        })
+    else:
+        searched_products = request.POST['product-search']
+        if len(searched_products) == 0:
+            for p in products:
+                p.final_price = round(p.final_price, 2)
+            return render(request, 'search.html', {
+                'products': products
+            })
+        else:
+            post_info = request.POST
+            if request.POST.get('shop') == 'add_to_cart':
+                product_id = post_info['product-id']
+                product = Producto.objects.get(id=product_id)
+                try:
+                    add_to_the_cart(user, product, 1)
+                except Exception as e:
+                    print(e)
+
+            products = Producto.objects.filter(
+                product_name__regex=r'^' + searched_products)
+            return render(request, 'search.html', {
+                'searched_product': searched_products,
+                'products': products
+            })

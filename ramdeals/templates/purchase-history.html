@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="../static/styles/shopping-cart-style.css">
+<title>RamDeals</title>
+
+<body>
+    <main>
+        <div class="table-container">
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    {% for product in products %}
+                    <tr>
+                        <td>
+                            <div class="item-info">
+                                <img src="{{product.image_url}}" alt="" class="cart-images">
+                                <div class="item-details">
+                                    <p>{{product.product_name}}</p>
+                                    <small>Precio: ${{product.total}}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td><input placeholder="1" max="{{product.stock}}" min="1" value="{{product.quantity}}"
+                                name="{{product}}" readonly></td>
+                        <td class="total-price">${{product.total}}</td>
+                    </tr>
+                    {% endfor %}
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </main>
+</body>
+{% endblock %}

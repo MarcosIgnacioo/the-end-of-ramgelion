@@ -50,8 +50,11 @@
           <a href="/signup"> Registrarse </a>
         </li>
         <li class="box">
-          <input type="text" placeholder="¿Qué es lo que buscas?" class="search-box" />
-          <a href="search.html" class="material-symbols-outlined"> search </a>
+          <form action="/search/" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="¿Qué es lo que buscas?" class="search-box" name="product-search" />
+            <button class="material-symbols-outlined"> search </button>
+          </form>
         </li>
         <li class="icons">
           <a href="#" class="material-symbols-outlined"> favorite </a>

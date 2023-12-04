@@ -59,18 +59,22 @@
         <div class="contenedor-productos">
             <div class="resultado">
                 <h1 class="titulo-resultado">
-                    Resultados sobre "Playstation 5"
+                    Resultados sobre "{{searched_product}}"
                 </h1>
                 <button class="btn-filtros">Filtros</button>
             </div>
             <div class="productos-all">
+                {% for product in products %}
                 <div class="producto-unique">
-                    <img src="recursos/producto-1.webp" alt="Playstation 5">
+                    <a href="{% url 'product-details' product_id=product.id %}" id="image_url">
+                        <img src="{{product.image_url}}">
+                    </a>
                     <div class="contenido">
                         <div class="div-title">
-                            <h1 class="producto-title">
-                                Consola Playstation 5 - Edición Física
-                            </h1>
+                            <a class="producto-title" href="{% url 'product-details' product_id=product.id %}"
+                                id="image_url">
+                                {{product.product_name}}
+                            </a>
                         </div>
                         <div class="stars">
                             <span class="fa fa-star checked"></span>
@@ -81,277 +85,27 @@
                         </div>
                         <div class="precio">
                             <h2 class="costo">
-                                $8,599
+                                {{product.final_price}}
                             </h2>
                         </div>
                         <div class="texto-producto">
                             <p>
-                                Conoce la famosa y nueva consola de SONY. <br> <br> Playstation 5, con sus poderosos 60
-                                FPS en 2023, por un precio especial.
+                                {{product.description}}
                             </p>
                         </div>
-                        <div class="comprar">
-                            <button class="btn-comprar">Comprar ahora</button>
-                            <button class="btn-carrito">
-                                <a href="#" class="material-symbols-outlined">
-                                    shopping_cart
-                                </a>
-                            </button>
-                        </div>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="comprar">
+                                <input type="text" value="{{product.id}}" name="product-id" hidden>
+                                <input type="text" value="{{product.product_name}}" name="prodoct-name" hidden>
+                                <input type="text" value="{{product.final_price}}" name="product-price" hidden>
+                                <input type="text" value="{{product.image_url}}" name="product-image" hidden>
+                                <input type="text" value="{{product.stock}}" name="product-stock" hidden>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="producto-unique">
-                    <img src="recursos/producto-2.png" alt="Polystation 5">
-                    <div class="contenido">
-                        <div class="div-title">
-                            <h1 class="producto-title">
-                                Consola Polystation 5 - Original
-                            </h1>
-                        </div>
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "> 8,885</span>
-                        </div>
-                        <div class="precio">
-                            <h2 class="costo">
-                                $21,999
-                            </h2>
-                        </div>
-                        <div class="texto-producto">
-                            <p>
-                                Conoce la nueva y potente Polystation 5. <br><br>
-                                Un producto lleno de potencia solamente para los más gamers.
-                            </p>
-                        </div>
-                        <div class="comprar">
-                            <button class="btn-comprar">Comprar ahora</button>
-                            <button class="btn-carrito">
-                                <a href="#" class="material-symbols-outlined">
-                                    shopping_cart
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="producto-unique">
-                    <img src="recursos/producto-3.jpg" alt="Playstation 5 edición spiderman">
-                    <div class="contenido">
-                        <div class="div-title">
-                            <h1 class="producto-title">
-                                Consola Playstation 5 - Edición Spiderman
-                            </h1>
-                        </div>
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star "> 1,222</span>
-                        </div>
-                        <div class="precio">
-                            <h2 class="costo">
-                                $9,999
-                            </h2>
-                        </div>
-                        <div class="texto-producto">
-                            <p>
-                                Conoce la no tan nueva Playstation 5, ahora con otro color y un poco más cara. <br> <br>
-                                Misma potencia solo que es rojita.
-                            </p>
-                        </div>
-                        <div class="comprar">
-                            <button class="btn-comprar">Comprar ahora</button>
-                            <button class="btn-carrito">
-                                <a href="#" class="material-symbols-outlined">
-                                    shopping_cart
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="producto-unique">
-                    <img src="recursos/producto-4.jpg" alt="Control de playstation 5">
-                    <div class="contenido">
-                        <div class="div-title">
-                            <h1 class="producto-title">
-                                Control Playstation 5 - Edición Clásica
-                            </h1>
-                        </div>
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "> 42,069</span>
-                        </div>
-                        <div class="precio">
-                            <h2 class="costo">
-                                $2,599
-                            </h2>
-                        </div>
-                        <div class="texto-producto">
-                            <p>
-                                Conoce el mejor control de la generación (segun SONY). <br> <br>
-                                Por el módico precio elevado que se muestra en pantalla.
-                            </p>
-                        </div>
-                        <div class="comprar">
-                            <button class="btn-comprar">Comprar ahora</button>
-                            <button class="btn-carrito">
-                                <a href="#" class="material-symbols-outlined">
-                                    shopping_cart
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="producto-unique">
-                    <img src="recursos/producto-5.jpg" alt="Audifonos de Playstation 5">
-                    <div class="contenido">
-                        <div class="div-title">
-                            <h1 class="producto-title">
-                                Headsets para Playstation 5 - Edición Clásica
-                            </h1>
-                        </div>
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star "> 5,767</span>
-                        </div>
-                        <div class="precio">
-                            <h2 class="costo">
-                                $1,999
-                            </h2>
-                        </div>
-                        <div class="texto-producto">
-                            <p>
-                                Conoce los nuevos audifonos que no te durarán más del año. <br><br>
-                                No te los pierdas porque se agotarán, (mentira).
-                            </p>
-                        </div>
-                        <div class="comprar">
-                            <button class="btn-comprar">Comprar ahora</button>
-                            <button class="btn-carrito">
-                                <a href="#" class="material-symbols-outlined">
-                                    shopping_cart
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="producto-unique">
-                    <img src="recursos/producto-6.jpg" alt="Cojín de control de playstation 5">
-                    <div class="contenido">
-                        <div class="div-title">
-                            <h1 class="producto-title">
-                                Cojín de control Playstation 5
-                            </h1>
-                        </div>
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "> 3,765</span>
-                        </div>
-                        <div class="precio">
-                            <h2 class="costo">
-                                $950
-                            </h2>
-                        </div>
-                        <div class="texto-producto">
-                            <p>
-                                Conoce el mejor producto de SONY que ni si quiera es de ellos. <br><br>
-                                El mejor producto que puedes tener mientras sueñas teniendo buenos exclusivos
-                            </p>
-                        </div>
-                        <div class="comprar">
-                            <button class="btn-comprar">Comprar ahora</button>
-                            <button class="btn-carrito">
-                                <a href="#" class="material-symbols-outlined">
-                                    shopping_cart
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="producto-unique">
-                    <img src="recursos/producto-7.webp" alt="">
-                    <div class="contenido">
-                        <div class="div-title">
-                            <h1 class="producto-title">
-                                Peppa Pig para Playstation 5 - edición GOTY
-                            </h1>
-                        </div>
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star "> 3,765</span>
-                        </div>
-                        <div class="precio">
-                            <h2 class="costo">
-                                $1,029
-                            </h2>
-                        </div>
-                        <div class="texto-producto">
-                            <p>
-                                Conoce y juega el mejor videojuego del año, el Peppa Pig <br><br>
-                                No tengo mucho qué decir, creo que lo dieron gratis.
-                            </p>
-                        </div>
-                        <div class="comprar">
-                            <button class="btn-comprar">Comprar ahora</button>
-                            <button class="btn-carrito">
-                                <a href="#" class="material-symbols-outlined">
-                                    shopping_cart
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="producto-unique">
-                    <img src="recursos/producto-8.png" alt="Playstation VR 5">
-                    <div class="contenido">
-                        <div class="div-title">
-                            <h1 class="producto-title">
-                                Playstation 5 VR - Conjunto completo
-                            </h1>
-                        </div>
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star "> 3,765</span>
-                        </div>
-                        <div class="precio">
-                            <h2 class="costo">
-                                $10,599
-                            </h2>
-                        </div>
-                        <div class="texto-producto">
-                            <p>
-                                Conoce el VR de Playstation, que de hecho no es muy bueno pero es dinero <br><br>
-                                Compralo ahora mismo (o no).
-                            </p>
-                        </div>
-                        <div class="comprar">
-                            <button class="btn-comprar">Comprar ahora</button>
-                            <button class="btn-carrito">
-                                <a href="#" class="material-symbols-outlined">
-                                    shopping_cart
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
