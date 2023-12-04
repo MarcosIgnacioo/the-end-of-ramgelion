@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import ProductForm
 from .forms import OrderProductForm
-from .models import Producto, Carts, CartsItems, PurchasedProducts
+from .models import Producto, Carts, CartsItems, PurchasedProducts, RamsesUsers
 from django.contrib.auth.hashers import check_password
 from .managers import get_current_cart, finish_cart_purchase
 # Create your views here.
@@ -58,7 +58,9 @@ def signup(request):
                     password=post_info['password'],
                     last_name=post_info['last_names'])
                 user.save()
-
+                ramses_user = RamsesUsers.objects.create(
+                    auth_user=user, adress=post_info['adress'], cellphone_number=post_info['cellphone_number'])
+                ramses_user.save()
                 login(request, user)
                 return redirect('home')
             except Exception as e:
@@ -123,18 +125,23 @@ def create_orders(request):
 def profile(request):
     if request.method == 'GET':
         user = request.user
-        print("gamers")
+        ramses_user = RamsesUsers.objects.get(auth_user=user)
+        adress = ramses_user.adress
+        cellphone_number = ramses_user.cellphone_number
         return render(request, 'user.html', {
             'user_first_name': user.first_name,
             'user_email': user.email,
             'user_last_names': user.last_name,
             'user_first_name': user.first_name,
+            'user_cellphone_number': cellphone_number,
+            'user_adress': adress,
         })
     else:
         try:
             user = request.user
-            new_info = request.POST
+            ramses_user = RamsesUsers.objects.get(auth_user=user)
 
+            new_info = request.POST
             new_email = new_info['email']
             new_first_names = new_info['names']
             new_last_names = new_info['last_names']
@@ -157,10 +164,14 @@ def profile(request):
             if len(actual_password) != 0:
                 if (check_password(actual_password, user.password)):
                     if (new_password == confirm_new_password):
-                        print('---------------------------')
-                        print("entramos aqui")
                         user.set_password(new_password)
+            if len(adress) != 0:
+                ramses_user.adress = adress
+            if len(cellphone_number) != 0:
+                ramses_user.cellphone_number = cellphone_number
             user.save()
+            login(request, user)
+            ramses_user.save()
             print("porfavor si esto sale vamos masoemnso bien")
             # TODO mandar un response sde que las contrase;as no coinciden
             # TODO mandar un response de que la contras;ea vieja no coincide

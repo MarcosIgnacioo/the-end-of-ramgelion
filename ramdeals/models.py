@@ -2,8 +2,6 @@ from django.db import models
 import uuid
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 
 class Producto(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -56,9 +54,7 @@ class ProductsCarts(models.Model):
     amount = models.FloatField()
 
 
-class Users(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    names = models.CharField(max_length=300)
-    last_names = models.CharField(max_length=300)
-    email = models.EmailField()
-    names = models.CharField(max_length=300)
+class RamsesUsers(models.Model):
+    auth_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    adress = models.CharField(max_length=300)
+    cellphone_number = models.CharField(max_length=300)
