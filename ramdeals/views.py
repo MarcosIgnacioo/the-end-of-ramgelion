@@ -174,9 +174,8 @@ def profile(request):
             ramses_user.save()
             print("porfavor si esto sale vamos masoemnso bien")
             # TODO mandar un response sde que las contrase;as no coinciden
-            # TODO mandar un response de que la contras;ea vieja no coincide
-
-            return render(request, 'index.html')
+            return redirect('home')
+            # return render(request, 'index.html')
         except Exception as e:
             return render(request, "user.html", {"error": e})
 
@@ -253,6 +252,7 @@ def product_details(request, product_id):
         if is_already_in_cart:
             already_item.quantity = already_item.quantity + quantity
             already_item.save()
+            return redirect('home')
         else:
             new_cart_addition = CartsItems(cart_id=cart.id, product_id=product.id, quantity=quantity, total=round(
                 product.final_price*float(quantity), 4))
